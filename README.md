@@ -162,6 +162,10 @@ None of these are hypothetical. All of them have a recovery checklist here.
 
 Ran a multi-harness board and hit a failure none of these patterns cover? Open an issue with the incident — recovery playbooks from real failures are exactly what this repo collects.
 
+## Related
+
+The lane runtimes in these patterns were not picked by vibes — they were picked by measurement. [coding-agent-battles](https://github.com/forcewake/coding-agent-battles) is the public benchmark harness: 12 scenarios, 6 agent scaffolds, 72 runs, with per-run token/cost telemetry, correctness evidence, and an audit pack.
+
 ## License
 
 [MIT](LICENSE) — battle-tested by necessity, shared so you can skip the 2am part.
