@@ -90,7 +90,7 @@ t1 = kanban_create(
     title="research: Postgres cost vs current",
     assignee="<profile-A>",  # whichever profile handles research on this setup
     body="Compare estimated infrastructure costs, migration costs, and ongoing ops costs over a 3-year window. Sources: AWS/GCP pricing, team time estimates, current Postgres bills from peers.",
-    tenant=os.environ.get("HERMES_TENANT"),
+    tenant=tenant,  # your deployment's namespace, if any
 )["task_id"]
 
 t2 = kanban_create(
@@ -178,7 +178,7 @@ Tell them what you created in plain prose, naming the actual profiles you used:
 
 **Don't pre-create the whole graph if the shape depends on intermediate findings.** If T3's structure depends on what T1 and T2 find, let T3 exist as a "synthesize findings" task whose own first step is to read parent handoffs and plan the rest. Orchestrators can spawn orchestrators.
 
-**Tenant inheritance.** If `HERMES_TENANT` is set in your env, pass `tenant=os.environ.get("HERMES_TENANT")` on every `kanban_create` call so child tasks stay in the same namespace.
+**Tenant inheritance.** If your deployment uses a tenant namespace, pass the same `tenant=` value on every `kanban_create` call so child tasks stay in the same namespace.
 
 ## Recovering stuck workers
 

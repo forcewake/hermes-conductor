@@ -133,7 +133,7 @@ Good: one sentence naming the specific decision you need. Leave longer context a
 
 ```python
 kanban_comment(
-    task_id=os.environ["HERMES_KANBAN_TASK"],
+    task_id=task_id,  # the task you are executing
     body="Full context: I have user IPs from Cloudflare headers but some users are behind NATs with thousands of peers. Keying on IP alone causes false positives.",
 )
 kanban_block(reason="Rate limit key choice: IP (simple, NAT-unsafe) or user_id (requires auth, skips anonymous endpoints)?")
@@ -159,10 +159,7 @@ If you open the task and `kanban_show` returns `runs: [...]` with one or more cl
 
 ## Notification routing
 
-You can configure the gateway to receive cross-profile Kanban task notifications by adding `notification_sources` to `~/.hermes/config.yaml`.
-- `notification_sources: ['*']` accepts subscriptions from all profiles.
-- `notification_sources: ['default', 'zilor-ppt']` or `"default,zilor-ppt"` restricts subscriptions to specified profiles.
-- Omitting the key keeps the default behavior (profile isolation).
+Cross-profile task notifications are an **operator-side gateway setting** (`notification_sources` in the Hermes gateway configuration — see the Hermes docs for exact syntax). As a worker you don't change it; if notifications from other profiles must reach your gateway, leave a comment asking the operator. Shorthand behaviour: `'*'` accepts subscriptions from all profiles, a profile list restricts them, and omitting the key keeps profile isolation.
 
 ## Do NOT
 
