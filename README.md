@@ -30,7 +30,7 @@ Distilled from **18 production kanban boards, 250+ completed cards, and every in
 
 ## Demo
 
-A real dispatch cycle — real board, real gateway dispatcher, real worker profile, no cuts between create and completion (only idle time compressed):
+A real dispatch cycle — real board, real gateway dispatcher, real worker profile. Only idle time is compressed; every byte of output is untouched:
 
 ![hermes-conductor demo](assets/conductor-demo.svg)
 
