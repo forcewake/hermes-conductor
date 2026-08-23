@@ -42,7 +42,7 @@ Cast: [`demo.cast`](assets/demo.cast) · narrated cut: [SVG](assets/conductor-de
 
 ![claude-code lane demo](assets/cc-lane-demo.svg)
 
-Cast: [`demo-claude-code.cast`](assets/demo-claude-code.cast)
+Cast: [`demo-claude-code.cast`](assets/demo-claude-code.cast) · video: [MP4](assets/cc-lane-demo.mp4)
 
 ## Why this exists
 
