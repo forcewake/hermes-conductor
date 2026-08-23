@@ -6,7 +6,7 @@ Use this when the user asks for multi-agent deep research / architectural analys
 
 - User asks to “spawn teams of agents in kanban mode”.
 - The task has 3+ independent research lanes that can run in parallel.
-- The output should survive context loss and be auditable as files, not just chat.
+- Results must be durable and auditable as files on disk, not only chat replies.
 
 ## Pattern
 
