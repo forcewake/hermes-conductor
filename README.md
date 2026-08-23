@@ -28,17 +28,21 @@ Distilled from **18 production boards, 367 cards, 566 agent dispatches — and e
    └─────────────────────────────────────────────────────────────────┘
 ```
 
-## Demo
+## Demos
 
-A real dispatch cycle — real board, real gateway dispatcher, real worker profile. Only idle time is compressed; every byte of output is untouched:
+Both are real runs, no cuts; only idle time is compressed.
+
+**1. Native dispatch cycle** — the controller creates a card, the gateway dispatcher hands it to a worker profile, the worker implements and tests, and the controller re-runs the tests itself before accepting the evidence. That last step is the whole point.
 
 ![hermes-conductor demo](assets/conductor-demo.svg)
 
-What you're watching: the controller creates a card → the gateway dispatcher hands it to a worker profile → the worker implements + tests in the card's workspace → the controller re-runs the tests itself before accepting the evidence. That last step is the whole point.
+Cast: [`demo.cast`](assets/demo.cast) · narrated cut: [SVG](assets/conductor-demo-narrated.svg) / [MP4](assets/demo-narrated.mp4)
 
-Raw asciinema cast: [`assets/demo.cast`](assets/demo.cast)
+**2. Claude Code as the lane executor (pattern 01)** — the controller keeps the card controller-owned, Claude Code works an isolated git worktree headlessly (`claude -p`), then the controller re-runs the tests and closes the card with evidence. Same board API, any CLI executor.
 
-Prefer a slower, narrated cut? [`assets/conductor-demo-narrated.svg`](assets/conductor-demo-narrated.svg) steps through the same run with on-screen commentary — or grab the [MP4](assets/demo-narrated.mp4).
+![claude-code lane demo](assets/cc-lane-demo.svg)
+
+Cast: [`demo-claude-code.cast`](assets/demo-claude-code.cast)
 
 ## Why this exists
 
