@@ -28,6 +28,16 @@ Distilled from **18 production kanban boards, 250+ completed cards, and every in
    └─────────────────────────────────────────────────────────────────┘
 ```
 
+## Demo
+
+A real dispatch cycle — real board, real gateway dispatcher, real worker profile, no cuts between create and completion (only idle time compressed):
+
+![hermes-conductor demo](assets/conductor-demo.svg)
+
+What you're watching: the controller creates a card → the gateway dispatcher hands it to a worker profile → the worker implements + tests in the card's workspace → the controller re-runs the tests itself before accepting the evidence. That last step is the whole point.
+
+Raw asciinema cast: [`assets/demo.cast`](assets/demo.cast)
+
 ## Why this exists
 
 The multi-harness wave is here — "Hermes as the brain, other agents as the arms." What the bridge demos don't show you is what happens on day 3:
