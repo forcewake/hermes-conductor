@@ -4,7 +4,7 @@
 
 Production orchestration patterns for running external coding agents — Claude Code, OpenCode, Codex CLI, MiMo, agy, or anything else that edits files — under a single [Hermes Agent](https://github.com/NousResearch/hermes-agent) kanban controller.
 
-Distilled from **18 production boards, 367 cards, 289 completed with verified evidence — and every incident that tried to ruin them.**
+Distilled from **18 production boards, 367 cards, 566 agent dispatches — and every incident that tried to ruin them.**
 
 ```
                           ┌──────────────────────┐
