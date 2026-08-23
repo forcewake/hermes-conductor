@@ -38,6 +38,8 @@ What you're watching: the controller creates a card → the gateway dispatcher h
 
 Raw asciinema cast: [`assets/demo.cast`](assets/demo.cast)
 
+Prefer a slower, narrated cut? [`assets/conductor-demo-narrated.svg`](assets/conductor-demo-narrated.svg) steps through the same run with on-screen commentary — or grab the [MP4](assets/demo-narrated.mp4).
+
 ## Why this exists
 
 The multi-harness wave is here — "Hermes as the brain, other agents as the arms." What the bridge demos don't show you is what happens on day 3:
