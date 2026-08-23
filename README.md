@@ -53,6 +53,22 @@ Every pattern in this repo exists because we hit the failure above it — in pro
 7. **Standing lanes stay blocked; bounded cron owns execution.** Ready + normal assignee on an eternal lane card = the dispatcher will spawn uncontrolled one-shots.
 8. **Complete with evidence or don't complete.** `kanban complete <id> --result "commit abc123, gates green"` — status flips without evidence get reverted.
 
+## Install
+
+The role playbooks are installable Hermes skills:
+
+```bash
+# on your orchestrator profile's machine/home:
+hermes skills install forcewake/hermes-conductor/skills/kanban-orchestrator
+
+# on each worker profile:
+hermes skills install forcewake/hermes-conductor/skills/kanban-worker
+```
+
+> `hermes skills install` accepts any `owner/repo/path` GitHub identifier —
+> no registry listing needed. The `patterns/` docs are meant to be read by
+> the human operating the controller, not installed.
+
 ## What's inside
 
 ### `patterns/` — the playbooks
@@ -67,12 +83,12 @@ Every pattern in this repo exists because we hit the failure above it — in pro
 | 06 | [Production swarm recovery](patterns/06-production-swarm-recovery.md) | Large completion swarms: research fan-out, task subscriptions, progress watchers. |
 | 07 | [Prototype furnace daily digest](patterns/07-prototype-furnace-daily-digest.md) | Standing-lane boards: committed-artifact counting, evidence gates, survivor selection, repo verification. |
 
-### `roles/` — drop-in profile playbooks
+### `skills/` — installable role playbooks
 
 | Role | What it is |
 |---|---|
-| [`kanban-orchestrator`](roles/kanban-orchestrator/SOURCE_SKILL.md) | The decomposition playbook: profile discovery, anti-temptation rules, fan-out/in, reviewer remediation loops, research-swarm artifact contracts. Includes [reviewer-remediation-loop](roles/kanban-orchestrator/references/reviewer-remediation-loop.md) and [research-swarm-artifact-pattern](roles/kanban-orchestrator/references/research-swarm-artifact-pattern.md). |
-| [`kanban-worker`](roles/kanban-worker/SOURCE_SKILL.md) | The worker lifecycle: claim → workspace → heartbeat → `kanban_complete(summary, metadata)` or `kanban_block` — plus edge cases that kill workers. |
+| [`kanban-orchestrator`](skills/kanban-orchestrator/SKILL.md) | The decomposition playbook: profile discovery, anti-temptation rules, fan-out/in, reviewer remediation loops, research-swarm artifact contracts. Includes [reviewer-remediation-loop](skills/kanban-orchestrator/references/reviewer-remediation-loop.md) and [research-swarm-artifact-pattern](skills/kanban-orchestrator/references/research-swarm-artifact-pattern.md). |
+| [`kanban-worker`](skills/kanban-worker/SKILL.md) | The worker lifecycle: claim → workspace → heartbeat → `kanban_complete(summary, metadata)` or `kanban_block` — plus edge cases that kill workers. |
 
 ### `examples/` — cheatsheet
 
@@ -105,7 +121,7 @@ Then read [pattern 01](patterns/01-controller-managed-external-worktree-lanes.md
 - Two worker cards editing the same checkout for six hours before anyone noticed → patterns 02, 05.
 - A card auto-promoted by its dependency completing, dispatched into a worktree two days stale → pattern 01's stale-base check.
 - A dispatcher loop respawning a worker stuck on an approval, all night → the standing-lane rule.
-- Review findings that "fixed" themselves because the reviewer card and the fix card raced → the remediation loop in `roles/`.
+- Review findings that "fixed" themselves because the reviewer card and the fix card raced → the remediation loop in `skills/`.
 
 None of these are hypothetical. All of them have a recovery checklist here.
 
