@@ -4,7 +4,7 @@
 
 Production orchestration patterns for running external coding agents — Claude Code, OpenCode, Codex CLI, MiMo, agy, or anything else that edits files — under a single [Hermes Agent](https://github.com/NousResearch/hermes-agent) kanban controller.
 
-Distilled from **18 production kanban boards, 250+ completed cards, and every incident that tried to ruin them.**
+Distilled from **18 production boards, 367 cards, 289 completed with verified evidence — and every incident that tried to ruin them.**
 
 ```
                           ┌──────────────────────┐
@@ -130,7 +130,7 @@ Then read [pattern 01](patterns/01-controller-managed-external-worktree-lanes.md
 ## Battle scars (where these came from)
 
 - A "successful" overnight swarm where three lanes silently built on a base that no longer existed → patterns 01, 05.
-- Two worker cards editing the same checkout for six hours before anyone noticed → patterns 02, 05.
+- Two worker cards editing the same checkout for hours before anyone noticed → patterns 02, 05.
 - A card auto-promoted by its dependency completing, dispatched into a worktree two days stale → pattern 01's stale-base check.
 - A dispatcher loop respawning a worker stuck on an approval, all night → the standing-lane rule.
 - Review findings that "fixed" themselves because the reviewer card and the fix card raced → the remediation loop in `skills/`.
