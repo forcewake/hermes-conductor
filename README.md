@@ -44,6 +44,17 @@ Cast: [`demo.cast`](assets/demo.cast) · narrated cut: [SVG](assets/conductor-de
 
 Cast: [`demo-claude-code.cast`](assets/demo-claude-code.cast) · video: [MP4](assets/cc-lane-demo.mp4)
 
+## Lane executor modes: CLI or SDK
+
+Pattern 01 shows the raw CLI lane (`claude -p`). For production lanes we run a structured runner built on the official Claude Agent SDK instead — same board lifecycle, tighter contract:
+
+- per-lane budget caps (`max_budget_usd`), `max_turns`, hard timeout
+- explicit allowed/disallowed tool grants per lane (no ambient toolset)
+- fail-closed provenance checks: the lane refuses to start if the runtime is not on the `expected_model` / `expected_context_window` the card was planned for
+- every run emits a JSON receipt (turns, cost, result) that the controller attaches as card evidence instead of parsing chat output
+
+That last point matters more than it sounds: receipts turn "the agent said it went fine" into machine-checkable evidence. The runner is being packaged for separate publication — watch this repo.
+
 ## Why this exists
 
 The multi-harness wave is here — "Hermes as the brain, other agents as the arms." What the bridge demos don't show you is what happens on day 3:
