@@ -160,6 +160,8 @@ None of these are hypothetical. All of them have a recovery checklist here.
 
 ## Contributing
 
+Questions, feedback, or your own adaptations of the patterns — post in the [discussion board](https://github.com/forcewake/hermes-conductor/discussions/1) (it's the pinned thread).
+
 Ran a multi-harness board and hit a failure none of these patterns cover? Open an issue with the incident — recovery playbooks from real failures are exactly what this repo collects.
 
 ## Related
